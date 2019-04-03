@@ -1,3 +1,13 @@
 <resources>
     <!--<string name="app_name">MathCanvasDraw</string>-->
+    <string name="UsernameTip">Username</string>
+    <string name="PasswordTip">Password</string>
+    <string name="api_error">Server response failed!</string>
+    <string name="no_internet">No connection!</string>
+    <string name="error">Error!</string>
+    <string name="login_failed">Wrong username or password!</string>
+    <string name="failed_load_avatar">Failed to load avatar!</string>
+    <string name="no_avatar_load">No avatar</string>
+    <string name="need_permission">Need permission to do it!</string>
+    <string name="error_upload">Upload failed!</string>
 </resources>
