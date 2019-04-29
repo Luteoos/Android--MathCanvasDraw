@@ -19,7 +19,10 @@ class SplashScreen: BaseActivityMVVM<SplashScreenViewModel>() {
         connectToVMMessage()
     }
 
-    override fun onVMMessage(msg: String?) {
-        Timber.log(0, msg)
+    override fun onVMMessage(msg: Int?) {
+        super.onVMMessage(msg)
+        when(msg){
+
+        }
     }
 }
