@@ -9,7 +9,7 @@
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
         <activity
-                android:name=".view.SplashScreen"
+                android:name=".view.activity.SplashScreen"
                 android:theme="@style/LandingTheme"
                 android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
@@ -18,5 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+                android:name=".view.activity.input.OnScreenMathKeyboard"
+                android:theme="@style/Translucent"
+        />
     </application>
 </manifest>
