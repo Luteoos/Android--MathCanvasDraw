@@ -2,8 +2,6 @@ package io.github.luteoos.mathcanvasdraw
 
 import android.app.Application
 import android.os.StrictMode
-import io.realm.Realm
-import io.realm.RealmConfiguration
 import timber.log.Timber
 
 class MDStartup : Application() {
@@ -13,13 +11,13 @@ class MDStartup : Application() {
         Timber.e(this.toString())
         if(BuildConfig.DEBUG)
             initDebugStuff()
-        Realm.init(this)
-        val realmConfiguration = RealmConfiguration
-            .Builder()
-            .deleteRealmIfMigrationNeeded()
-            .build()
-        Realm.setDefaultConfiguration(realmConfiguration)
-        //SessionManager.init(applicationContext)
+//        Realm.init(this)
+//        val realmConfiguration = RealmConfiguration
+//            .Builder()
+//            .deleteRealmIfMigrationNeeded()
+//            .build()
+//        Realm.setDefaultConfiguration(realmConfiguration)
+//        //SessionManager.init(applicationContext)
     }
 
     private fun initDebugStuff() {
