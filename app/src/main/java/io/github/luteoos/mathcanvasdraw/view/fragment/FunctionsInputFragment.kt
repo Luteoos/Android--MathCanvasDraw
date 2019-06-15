@@ -1,14 +1,15 @@
 package io.github.luteoos.mathcanvasdraw.view.fragment
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.luteoos.kotlin.mvvmbaselib.BaseFragmentMVVM
 import io.github.luteoos.mathcanvasdraw.R
 import io.github.luteoos.mathcanvasdraw.viewmodels.OnScreenMathKeyboardViewModel
-import kotlinx.android.synthetic.main.fragment_functions_input.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import java.util.*
 
 class FunctionsInputFragment: BaseFragmentMVVM<OnScreenMathKeyboardViewModel>() {
     override fun getLayoutID(): Int = R.layout.fragment_functions_input
@@ -17,7 +18,20 @@ class FunctionsInputFragment: BaseFragmentMVVM<OnScreenMathKeyboardViewModel>() 
         val view =  super.onCreateView(inflater, container, savedInstanceState)
         viewModel = getViewModel(activity!!)
         connectToVMMessage()
-        viewModel.getFunction().observe(this, Observer { value -> textView2.text = value })
+        setBindings(view!!)
         return view
     }
+
+    private fun setBindings(view: View){
+        val buttons : ArrayList<View>? = view.touchables
+        buttons?.forEach {component ->
+            if(component is Button)
+                component.let {
+                    it.onClick {
+                        viewModel.addToFunction((it as Button).text.toString())
+                    }
+                }
+        }
+    }
+
 }

@@ -2,12 +2,112 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
-
-    <TextView
-            android:text="TESTNUMBERINPUT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTEST2" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="7"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnSeven"
+                    android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="4"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnFour" android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="1"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnOne" android:background="@drawable/rounded_button"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"/>
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/button9" android:layout_weight="1"
+                    tools:visibility="invisible" android:visibility="invisible"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="8"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnEight"
+                    android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="5"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnFive"
+                    android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="2"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnTwo" android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="0"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnZero"
+                    android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="9"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnNine" android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="6"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnSix" android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="3"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnThree"
+                    android:background="@drawable/rounded_button"
+                    android:layout_weight="1"/>
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/button10" android:layout_weight="1"
+                    tools:visibility="invisible" android:visibility="invisible"/>
+        </LinearLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

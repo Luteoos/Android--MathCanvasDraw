@@ -4,6 +4,7 @@
     <color name="colorPrimaryLight">#616161</color>
     <color name="colorPrimaryDark">#424242</color>
     <color name="colorAccent">#18ffff</color>
+    <color name="colorAccentDark">#18ffe1</color>
     <color name="colorFont">@color/ivory</color>
     <color name="ivory">#FFFFF0</color>
     <color name="light_yellow">#FFFFE0</color>
