@@ -7,11 +7,12 @@ import com.luteoos.kotlin.mvvmbaselib.BaseViewModel
 class OnScreenMathKeyboardViewModel: BaseViewModel() {
 
     private val func : MutableLiveData<String> = MutableLiveData()
+    private val list: MutableList<String> = mutableListOf()
     private val operators: MutableList<String> = mutableListOf("+","*","/","^")
     private val longOperators: MutableList<String> = mutableListOf("cos","sin","tg","ctg","Sqrt","ln")
-    private var lastComponentLength = 0
+    private val BEGIN = "f(x)="
 init{
-    func.value = "f(x)="
+    func.value = BEGIN
 }
     fun getFunction(): LiveData<String> = func
 
@@ -30,19 +31,33 @@ init{
                 return
             if(longOperators.contains(test))
                 test += "("
-            func.value += test
-            lastComponentLength = test.length
+            list.add(test)
+            updateFunc()
         }
     }
 
     fun backspaceFunction(){
-        if(func.value!!.last().toString() != "=")
-            func.value = func.value!!.substring(0, func.value!!.length - 1)
+        if(list.size != 0) {
+            list.removeAt(list.size - 1)
+            updateFunc()
+        }
     }
 
     fun getData(): String? {
         if(func.value!!.length <= 5)
             return null
         return func.value
+    }
+
+    private fun updateFunc(){
+        func.value = BEGIN + listToString(list)
+    }
+
+    private fun listToString(list: MutableList<String>): String {
+        var new = ""
+        list.forEach {
+            new += it
+        }
+        return new
     }
 }
