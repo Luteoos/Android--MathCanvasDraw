@@ -21,13 +21,18 @@
         <item name="android:background">
         </item> <!-- #33000000 Or any transparency or color you need -->
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/TranslucentAnimation</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation</item>
         <item name="android:textColor">@color/grey_700</item>
         <item name="android:editTextColor">@android:color/white</item>
         <item name="android:textCursorDrawable">@color/colorPrimary</item>
+    </style>
+
+    <style name="TranslucentAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <!--<item name="android:windowExitAnimation">@android:anim/</item>-->
     </style>
 
     <style name="DialogTheme" parent="Base.Theme.AppCompat.Light.Dialog.Alert">

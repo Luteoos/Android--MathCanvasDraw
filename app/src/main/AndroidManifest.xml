@@ -22,5 +22,9 @@
                 android:name=".view.activity.input.OnScreenMathKeyboard"
                 android:theme="@style/Translucent"
         />
+        <activity android:name=".view.activity.MainScreen"
+                  android:theme="@style/LandingTheme"
+                  android:windowSoftInputMode="stateHidden|adjustPan"
+        />
     </application>
 </manifest>

@@ -22,6 +22,9 @@ class SplashScreen: BaseActivityMVVM<SplashScreenViewModel>() {
         button.onClick {
             startActivity()
         }
+        button3.onClick {
+            startMainScreenActivity()
+        }
     }
 
     override fun onVMMessage(msg: Int?) {
@@ -33,6 +36,12 @@ class SplashScreen: BaseActivityMVVM<SplashScreenViewModel>() {
 
     private fun startActivity(){
         val intent = Intent(this, OnScreenMathKeyboard::class.java)
+        //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    private fun startMainScreenActivity(){
+        val intent = Intent(this, MainScreen::class.java)
         //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }

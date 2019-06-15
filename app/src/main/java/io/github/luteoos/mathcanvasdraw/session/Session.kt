@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import io.github.luteoos.mathcanvasdraw.view.activity.MainScreen
 import io.github.luteoos.mathcanvasdraw.view.activity.SplashScreen
 import java.util.*
 
@@ -47,7 +48,7 @@ object Session {
 
     fun logout(context: Context) {
         preferences.edit().clear().apply()
-        val intent = Intent(context, SplashScreen::class.java)
+        val intent = Intent(context, MainScreen::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)

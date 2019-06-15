@@ -2,6 +2,7 @@ package io.github.luteoos.mathcanvasdraw
 
 import android.app.Application
 import android.os.StrictMode
+import io.github.luteoos.mathcanvasdraw.session.Session
 import timber.log.Timber
 
 class MDStartup : Application() {
@@ -17,7 +18,7 @@ class MDStartup : Application() {
 //            .deleteRealmIfMigrationNeeded()
 //            .build()
 //        Realm.setDefaultConfiguration(realmConfiguration)
-//        //SessionManager.init(applicationContext)
+        Session.init(applicationContext)
     }
 
     private fun initDebugStuff() {
