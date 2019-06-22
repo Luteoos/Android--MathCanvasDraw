@@ -3,6 +3,7 @@ package io.github.luteoos.mathcanvasdraw.view.activity
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
@@ -12,6 +13,7 @@ import com.luteoos.kotlin.mvvmbaselib.BaseActivityMVVM
 import es.dmoral.toasty.Toasty
 import io.github.luteoos.mathcanvasdraw.R
 import io.github.luteoos.mathcanvasdraw.session.Session
+import io.github.luteoos.mathcanvasdraw.view.fragment.FunctionsInputFragment
 import io.github.luteoos.mathcanvasdraw.viewmodels.MainScreenViewModel
 import kotlinx.android.synthetic.main.activity_main_screen.*
 import kotlinx.android.synthetic.main.header_main_screen.view.*
@@ -51,6 +53,12 @@ class MainScreen: BaseActivityMVVM<MainScreenViewModel>(), NavigationView.OnNavi
     private fun getHeader(){
         drawer_layout.openDrawer(Gravity.START)
         header = nav_view.getHeaderView(0)
+    }
+
+    private fun loadFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainFragment, fragment)
+            .commitAllowingStateLoss()
     }
 
     override fun onBackPressed() {
