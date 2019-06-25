@@ -1,4 +1,4 @@
 package io.github.luteoos.mathcanvasdraw.network.request
 
-class loginRequest(var name: String,
+class LoginRequest(var name: String,
                    var password: String)

@@ -8,7 +8,7 @@ class FunctionResponse: BaseData {
     override var creationDate: String? = null
     var min: Double? = null
     var max: Double? = null
-    var approximation: Double? = null
+    var approximation: Int? = null
     var name: String? = null
     @SerializedName("parameters")
     var functionBody: String? = null

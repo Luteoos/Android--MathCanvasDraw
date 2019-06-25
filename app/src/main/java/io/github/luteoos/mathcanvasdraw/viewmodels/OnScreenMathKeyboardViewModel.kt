@@ -10,7 +10,7 @@ class OnScreenMathKeyboardViewModel: BaseViewModel() {
     private val list: MutableList<String> = mutableListOf()
     private val operators: MutableList<String> = mutableListOf("+","*","/","^")
     private val longOperators: MutableList<String> = mutableListOf("cos","sin","tg","ctg","Sqrt","ln")
-    private val BEGIN = "f(x)="
+    private val BEGIN = "f(x) = "
 init{
     func.value = BEGIN
 }
@@ -29,6 +29,8 @@ init{
                 return
             if (test == "x" && func.value!!.last().toString() == "x")
                 return
+            if(test == "x" && func.value!!.last().isDigit())
+                test = "*$test"
             if(longOperators.contains(test))
                 test += "("
             list.add(test)
