@@ -32,6 +32,10 @@
                   android:theme="@style/LandingTheme"
                   android:windowSoftInputMode="stateHidden|adjustPan"
         />
+        <activity android:name=".view.activity.ChartDrawerActivity"
+                  android:theme="@style/LandingTheme"
+                  android:windowSoftInputMode="stateHidden|adjustPan"
+        />
         <activity android:name=".view.activity.ChartCreatorActivity"
                   android:theme="@style/LandingTheme"
                   android:windowSoftInputMode="stateHidden|adjustPan"

@@ -1,5 +1,6 @@
 package io.github.luteoos.mathcanvasdraw.network
 
+import io.github.luteoos.mathcanvasdraw.network.request.ChartRequest
 import io.github.luteoos.mathcanvasdraw.network.request.FunctionRequest
 import io.github.luteoos.mathcanvasdraw.network.request.LoginRequest
 import io.github.luteoos.mathcanvasdraw.network.request.RegisterRequest
@@ -30,7 +31,7 @@ interface API {
      */
 
     @POST("Chart")
-    fun postChart(@Body name: String) : Single<Response<String>>
+    fun postChart(@Body request: ChartRequest) : Single<Response<String>>
 
     @GET("Chart/{id}")
     fun getChart(@Path("id") id: String): Single<Response<ChartResponse>>

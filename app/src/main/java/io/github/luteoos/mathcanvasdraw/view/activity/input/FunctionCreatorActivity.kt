@@ -57,6 +57,8 @@ class FunctionCreatorActivity : BaseActivityMVVM<SplashScreenViewModel>() {
             approximation = etApprox.text.toString().split(".")[0].toInt()
 
         }
+        if(result.min!! >= result.max!!)
+            return
         val data = Intent().putExtra(Parameters.GET_FUNCTION_AS_EXTRAS, result)
         setResult(Activity.RESULT_OK, data)
         finish()

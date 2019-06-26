@@ -9,11 +9,12 @@ import com.luteoos.kotlin.mvvmbaselib.BaseActivityMVVM
 import es.dmoral.toasty.Toasty
 import io.github.luteoos.mathcanvasdraw.R
 import io.github.luteoos.mathcanvasdraw.network.request.FunctionRequest
-import io.github.luteoos.mathcanvasdraw.network.response.FunctionResponse
+import io.github.luteoos.mathcanvasdraw.network.response.ChartResponse
 import io.github.luteoos.mathcanvasdraw.utils.Parameters
 import io.github.luteoos.mathcanvasdraw.view.activity.input.FunctionCreatorActivity
 import io.github.luteoos.mathcanvasdraw.view.adapter.RVFunctionListChartCreator
 import io.github.luteoos.mathcanvasdraw.viewmodels.ChartCreatorViewModel
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_chart_creator.*
 
 class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
@@ -35,6 +36,7 @@ class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
         super.onVMMessage(msg)
         when(msg){
             -10 -> Toasty.error(this, "Error, something went wrong").show()
+            viewModel.CHART_SUCCESS_UPLOAD -> viewModel.updateValidatedChart(rvAdapter.data)
         }
     }
 
@@ -53,9 +55,17 @@ class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
             if(it != null)
                 rvAdapter.addFunctionToData(it)
         })
+        viewModel.getChartUUID().observe(this, Observer {
+            if(it != null)
+                startCanvasActivity(it)
+        })
 
         btnAddFunction.setOnClickListener {
             addFunction()
+        }
+
+        floatingActionButton.setOnClickListener {
+            viewModel.createChart()
         }
     }
 
@@ -68,5 +78,11 @@ class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
     private fun addFunction(){
         val intent = Intent(this, FunctionCreatorActivity::class.java)
         startActivityForResult(intent, REQUEST_ADD_FUNCTION)
+    }
+
+    private fun startCanvasActivity(chartUUID: String){
+        val intent = Intent(this, ChartDrawerActivity::class.java)
+        intent.putExtra(Parameters.GET_CHART_GUID, chartUUID)
+        startActivity(intent)
     }
 }

@@ -1,5 +1,6 @@
 package io.github.luteoos.mathcanvasdraw.network
 
+import io.realm.RealmModel
 import java.io.Serializable
 import java.util.*
 

@@ -1,13 +1,16 @@
 package io.github.luteoos.mathcanvasdraw.network.response
 
-import com.google.gson.annotations.SerializedName
 import io.github.luteoos.mathcanvasdraw.network.BaseData
-import retrofit2.http.Field
+import io.realm.RealmList
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
-open class ChartResponse: BaseData{
+open class ChartResponse: BaseData, RealmObject(){
+    @PrimaryKey
     override var guid: String? = null
     override var creationDate: String? = null
+    var name: String? = null
     var logo: String? = null
-    var functions: MutableList<FunctionResponse>? = null
+    var functions: RealmList<FunctionResponse>? = null
 
 }
