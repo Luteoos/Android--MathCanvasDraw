@@ -53,7 +53,7 @@ class MainScreen: BaseActivityMVVM<MainScreenViewModel>(), NavigationView.OnNavi
     }
 
     private fun getHeader(){
-        drawer_layout.openDrawer(Gravity.START)
+        //drawer_layout.openDrawer(Gravity.START)
         header = nav_view.getHeaderView(0)
     }
 

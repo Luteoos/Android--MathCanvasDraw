@@ -12,4 +12,20 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_button" android:padding="10dp"
             android:textColor="@color/colorPrimary"/>
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/rvChartList"
+            app:layout_constraintTop_toBottomOf="@+id/tvExistingChartList" android:layout_marginTop="8dp"/>
+    <TextView
+            android:text="Existing charts: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvExistingChartList"
+            app:layout_constraintTop_toBottomOf="@+id/btnGoToCartCreator"
+            app:layout_constraintEnd_toEndOf="@+id/btnGoToCartCreator"
+            app:layout_constraintStart_toStartOf="@+id/btnGoToCartCreator" android:layout_marginTop="8dp"
+            android:textColor="@color/colorAccent"/>
 </android.support.constraint.ConstraintLayout>
