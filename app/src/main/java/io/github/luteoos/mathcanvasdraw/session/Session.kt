@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import io.github.luteoos.mathcanvasdraw.view.activity.MainScreen
-import io.github.luteoos.mathcanvasdraw.view.activity.SplashScreen
 import java.util.*
 
 object Session {

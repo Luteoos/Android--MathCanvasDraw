@@ -14,7 +14,6 @@ import es.dmoral.toasty.Toasty
 import io.github.luteoos.mathcanvasdraw.R
 import io.github.luteoos.mathcanvasdraw.session.Session
 import io.github.luteoos.mathcanvasdraw.view.fragment.CreateChartMainFragment
-import io.github.luteoos.mathcanvasdraw.view.fragment.FunctionsInputFragment
 import io.github.luteoos.mathcanvasdraw.viewmodels.MainScreenViewModel
 import kotlinx.android.synthetic.main.activity_main_screen.*
 import kotlinx.android.synthetic.main.header_main_screen.view.*
@@ -37,9 +36,11 @@ class MainScreen: BaseActivityMVVM<MainScreenViewModel>(), NavigationView.OnNavi
     private fun setBindings(){
         nav_view.setNavigationItemSelectedListener(this)
 //      TODO Uncomment this b4 release
-       if(Session.userUUDString == "")
-            nav_view.menu.findItem(R.id.menuLogout).isVisible = false
-        header.button2.onClick {
+//       if(Session.userUUDString == "")
+//            nav_view.menu.findItem(R.id.menuLogout).isVisible = false
+//        else
+           header.btnLogIn.visibility = View.GONE
+        header.btnLogIn.onClick {
             Toasty.error(this@MainScreen, "NIE").show()
         }
     }
@@ -53,7 +54,6 @@ class MainScreen: BaseActivityMVVM<MainScreenViewModel>(), NavigationView.OnNavi
     }
 
     private fun getHeader(){
-        //drawer_layout.openDrawer(Gravity.START)
         header = nav_view.getHeaderView(0)
     }
 
