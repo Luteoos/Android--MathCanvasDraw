@@ -36,8 +36,8 @@ class MainScreen: BaseActivityMVVM<MainScreenViewModel>(), NavigationView.OnNavi
     private fun setBindings(){
         nav_view.setNavigationItemSelectedListener(this)
 //      TODO Uncomment this b4 release
-//       if(Session.userUUDString == "")
-//            nav_view.menu.findItem(R.id.menuLogout).isVisible = false
+       if(Session.userUUDString == "")
+            nav_view.menu.findItem(R.id.menuLogout).isVisible = false
 //        else
            header.btnLogIn.visibility = View.GONE
         header.btnLogIn.onClick {
