@@ -49,6 +49,7 @@ class ChartDrawerViewModel : BaseViewModel() {
 
     private fun getEvaluatedFunctions(){
         chart.value!!.functions!!.forEach {function ->
+            function.color = Parameters.colorList[evaluatedFunctionsList.size]
             val client = RestApi.createService(API::class.java).getEvvaluateFunction(function.guid!!)
             CompositeDisposable().add(client
                 .subscribeOn(Schedulers.io())
@@ -61,7 +62,7 @@ class ChartDrawerViewModel : BaseViewModel() {
                                     x = it!!.x
                                     y = it.y
                                     guid = function.guid
-                                    color = Parameters.colorList[evaluatedFunctionsList.size]
+                                    color = function.color
                                 }
                             )
                         }
@@ -74,29 +75,6 @@ class ChartDrawerViewModel : BaseViewModel() {
                 }))
         }
     }
-
-    //TODO here all loading evaluating from api etc
-//    fun drawOnCanvas(holder: SurfaceHolder){
-//        this.holder = holder
-//        val canvas = holder.lockCanvas()
-//        canvas.apply{
-//            drawLine(0f,0f,100f,0f, getPaint("#FFFFFF"))
-//            drawLine(0f,0f,0f,100f, getPaint("#FFFFFF"))
-//            drawLine(0f,0f,canvasWidth-100f,1000f, getPaint("#FFFFFF"))
-//        }
-//        holder.unlockCanvasAndPost(canvas)
-//    }
-//
-//    fun test(){
-//        val canvas = holder!!.lockCanvas()
-//        canvas.apply{
-//            drawLine(0f,0f,100f,0f, getPaint("#aaaaFF"))
-//            drawLine(0f,0f,0f,100f, getPaint("#bbbbFF"))
-//            drawLine(0f,0f,1000f,1000f, getPaint("#ddFFdd"))
-//            drawLine(-10f,-50f, 100f, 190f, getPaint("#aaaaaa"))
-//        }
-//        holder!!.unlockCanvasAndPost(canvas)
-//    }
 
     private fun listUpdated(){
         if( evaluatedFunctionsList.size < chart.value?.functions!!.size)

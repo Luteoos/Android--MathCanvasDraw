@@ -61,7 +61,10 @@ class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
         })
 
         btnAddFunction.setOnClickListener {
-            addFunction()
+            if(rvAdapter.data.size < Parameters.colorList.size)
+                addFunction()
+            else
+                Toasty.error(this, "Maximum functions reached").show()
         }
 
         floatingActionButton.setOnClickListener {

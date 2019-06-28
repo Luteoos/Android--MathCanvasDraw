@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import com.luteoos.kotlin.mvvmbaselib.BaseActivityMVVM
+import es.dmoral.toasty.Toasty
 import io.github.luteoos.mathcanvasdraw.R
 import io.github.luteoos.mathcanvasdraw.network.request.FunctionRequest
 import io.github.luteoos.mathcanvasdraw.network.response.FunctionResponse
@@ -47,8 +48,10 @@ class FunctionCreatorActivity : BaseActivityMVVM<SplashScreenViewModel>() {
                 etMax.text.isNullOrEmpty() ||
                 etMin.text.isNullOrEmpty() ||
                 etName.text.isNullOrEmpty() ||
-                tvFunctionBody.text.isNullOrEmpty())
+                tvFunctionBody.text.isNullOrEmpty()){
+            Toasty.error(this, "All fields must be filled").show()
             return
+        }
         val result = FunctionRequest().apply {
             functionString = tvFunctionBody.text.toString()
             name = etName.text.toString()
@@ -57,8 +60,10 @@ class FunctionCreatorActivity : BaseActivityMVVM<SplashScreenViewModel>() {
             approximation = etApprox.text.toString().split(".")[0].toInt()
 
         }
-        if(result.min!! >= result.max!!)
+        if(result.min!! >= result.max!!){
+            Toasty.error(this, "Minimal value can't be bigger than maximal").show()
             return
+        }
         val data = Intent().putExtra(Parameters.GET_FUNCTION_AS_EXTRAS, result)
         setResult(Activity.RESULT_OK, data)
         finish()

@@ -24,39 +24,45 @@ class CanvasDrawerHelper(var holder: SurfaceHolder,
         val first = list.firstOrNull()
         minX =
             if(first != null)
-                first.x!![0]
+                first.x!![0]!!
             else
                 0.0
         maxX =
             if(first != null)
-                first.x!!.last()
+                first.x!!.last()!!
         else
                 0.0
         minY =
             if(first != null)
-                -first.y!![0]
+                if(first.y!![0] != null)
+                    -first.y!![0]!!
+        else
+                    0.0
         else
                 0.0
         maxY =
             if(first != null)
-                -first.y!![0]
+                if(first.y!![0] != null)
+                    -first.y!![0]!!
+                else
+                    0.0
         else
                 0.0
-            if(first != null)
-                first.y
 
         list.forEach {
             it.x!!.forEach {
-                if(it < minX)
+                if(it!! < minX)
                     minX = it
-                if(it > maxX)
+                if(it!! > maxX)
                     maxX = it
             }
             it.y!!.forEach {
-                if(it < minY)
-                    minY = it
-                if(it > maxY)
-                    maxY = it
+                if(it != null) {
+                    if (it < minY)
+                        minY = it
+                    if (it > maxY)
+                        maxY = it
+                }
             }
         }
         spanX = maxX - minX
@@ -64,7 +70,8 @@ class CanvasDrawerHelper(var holder: SurfaceHolder,
         getScale()
         list.forEach {
             for(i in 0 until it.x!!.size){
-                drawPoint(it.x!![i], it.y!![i], it.color)
+                if(it.y!![i] != null)
+                    drawPoint(it.x!![i]!!, it.y!![i]!!, it.color)
             }
         }
         drawAxis()
