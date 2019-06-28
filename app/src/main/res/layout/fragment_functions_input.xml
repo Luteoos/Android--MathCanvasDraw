@@ -114,7 +114,7 @@
                     android:background="@drawable/rounded_button"
             />
             <Button
-                    android:text="ln"
+                    android:text="log2"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -9,7 +9,7 @@ class OnScreenMathKeyboardViewModel: BaseViewModel() {
     private val func : MutableLiveData<String> = MutableLiveData()
     private val list: MutableList<String> = mutableListOf()
     private val operators: MutableList<String> = mutableListOf("+","*","/","^")
-    private val longOperators: MutableList<String> = mutableListOf("cos","sin","tg","ctg","Sqrt","ln")
+    private val longOperators: MutableList<String> = mutableListOf("cos","sin","tg","ctg","Sqrt","log2")
     private val BEGIN = "f(x) = "
 init{
     func.value = BEGIN
