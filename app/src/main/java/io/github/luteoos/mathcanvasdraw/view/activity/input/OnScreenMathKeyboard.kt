@@ -29,8 +29,12 @@ class OnScreenMathKeyboard : BaseActivityMVVM<OnScreenMathKeyboardViewModel>() {
     private fun setBindings(){
         fab.onClick {
             when(inputPager.currentItem){
-                0 -> inputPager.setCurrentItem(1, true)
-                1 -> inputPager.setCurrentItem(0, true)
+                0 -> {
+                    inputPager.setCurrentItem(1, true)
+                    fab.setImageDrawable(getDrawable(R.drawable.ic_arrow_back_black_24dp))
+                }
+                1 -> {inputPager.setCurrentItem(0, true)
+                    fab.setImageDrawable(getDrawable(R.drawable.ic_arrow_forward_black_24dp))}
             }
         }
         fabBackspace.onClick {

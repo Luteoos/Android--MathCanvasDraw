@@ -12,7 +12,7 @@
     <android.support.design.widget.FloatingActionButton
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:clickable="true" app:srcCompat="@color/colorAccent" android:id="@+id/fab"
+            android:clickable="true" app:srcCompat="@drawable/ic_arrow_forward_black_24dp" android:id="@+id/fab"
             android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="24dp" android:backgroundTint="@color/colorAccent"/>
