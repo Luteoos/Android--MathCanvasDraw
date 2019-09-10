@@ -68,13 +68,28 @@ class CanvasDrawerHelper(var holder: SurfaceHolder,
         spanX = maxX - minX
         spanY = abs(maxY - minY)
         getScale()
-        list.forEach {
-            for(i in 0 until it.x!!.size){
-                if(it.y!![i] != null)
-                    drawPoint(it.x!![i]!!, it.y!![i]!!, it.color)
+        val canvas = holder.lockCanvas()
+        canvas.apply {
+            list.forEach {
+                var paint = getPaint(it.color)
+                for (i in 0 until it.x!!.size) {
+                    if (it.y!![i] != null)
+                        drawPoint(getPointXScaled(it.x!![i]!!), getPointYScaled( it.y!![i]!!), paint)
+                }
             }
+            drawLine(getPointXScaled(minX),getPointYScaled(0.0),
+                getPointXScaled(maxX),getPointYScaled(0.0), getLinePaint("#FFFFFF"))
+            drawLine(getPointXScaled(0.0),getPointYScaled(minY),
+                getPointXScaled(0.0),getPointYScaled(maxY), getLinePaint("#FFFFFF"))
         }
-        drawAxis()
+        holder.unlockCanvasAndPost(canvas)
+//        list.forEach {
+//            for(i in 0 until it.x!!.size){
+//                if(it.y!![i] != null)
+//                    drawPoint(it.x!![i]!!, it.y!![i]!!, it.color)
+//            }
+//        }
+//        drawAxis()
 
     }
 

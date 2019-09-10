@@ -18,7 +18,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
+import timber.log.Timber
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class ChartDrawerViewModel : BaseViewModel() {
 
@@ -52,10 +54,12 @@ class ChartDrawerViewModel : BaseViewModel() {
             function.color = Parameters.colorList[evaluatedFunctionsList.size]
             val client = RestApi.createService(API::class.java).getEvvaluateFunction(function.guid!!)
             CompositeDisposable().add(client
+                .timeout(60, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe ({
                     if(it.code() == 200) {
+                        Timber.i("MathDrawerCanvas code 200 Request: ${it.headers()}")
                         it.body().let {
                             evaluatedFunctionsList.add(
                                 FunctionEvaluateWrapper().apply {
@@ -68,9 +72,12 @@ class ChartDrawerViewModel : BaseViewModel() {
                         }
                         listUpdated()
                     }
-                    else
+                    else {
+                        Timber.e("MathDrawerCanvas error ${it.code()}")
                         send(-10)
+                    }
                 },{
+                    Timber.e("MathDrawerCanvas error ${it.message}")
                     send(-10)
                 }))
         }
@@ -79,6 +86,7 @@ class ChartDrawerViewModel : BaseViewModel() {
     private fun listUpdated(){
         if( evaluatedFunctionsList.size < chart.value?.functions!!.size)
             return
+        Timber.i("MathDrawerCanvas All evaluate calls ended")
         CanvasDrawerHelper(holder!!, canvasWidth, canvasHeight).calculateConstrains(evaluatedFunctionsList)
     }
 }

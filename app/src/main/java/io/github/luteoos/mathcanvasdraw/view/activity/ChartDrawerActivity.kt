@@ -22,6 +22,7 @@ class ChartDrawerActivity : BaseActivityMVVM<ChartDrawerViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = getViewModel(this)
+        connectToVMMessage()
         setBindings()
         viewModel.loadChart(intent.getStringExtra(Parameters.GET_CHART_GUID))
         canvas.holder.addCallback(object : SurfaceHolder.Callback{
