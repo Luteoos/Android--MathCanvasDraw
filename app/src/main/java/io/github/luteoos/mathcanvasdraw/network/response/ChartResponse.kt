@@ -12,5 +12,4 @@ open class ChartResponse: BaseData, RealmObject(){
     var name: String? = null
     var logo: String? = null
     var functions: RealmList<FunctionResponse>? = null
-
 }

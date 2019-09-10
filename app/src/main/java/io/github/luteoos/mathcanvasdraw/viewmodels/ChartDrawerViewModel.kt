@@ -51,7 +51,7 @@ class ChartDrawerViewModel : BaseViewModel() {
 
     private fun getEvaluatedFunctions(){
         chart.value!!.functions!!.forEach {function ->
-            function.color = Parameters.colorList[evaluatedFunctionsList.size]
+            function.color = function.customColor ?: Parameters.colorList[evaluatedFunctionsList.size]
             val client = RestApi.createService(API::class.java).getEvvaluateFunction(function.guid!!)
             CompositeDisposable().add(client
                 .timeout(60, TimeUnit.SECONDS)

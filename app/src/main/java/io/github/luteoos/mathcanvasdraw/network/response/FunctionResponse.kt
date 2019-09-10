@@ -1,5 +1,6 @@
 package io.github.luteoos.mathcanvasdraw.network.response
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import io.github.luteoos.mathcanvasdraw.network.BaseData
 import io.realm.RealmObject
@@ -18,5 +19,6 @@ open class FunctionResponse: BaseData, RealmObject(){
     var functionBody: String? = null
     @Ignore
     var color: String = "#FFFFFF"
-
+    @Expose(serialize = false, deserialize = false)
+    var customColor: String? = null
 }
