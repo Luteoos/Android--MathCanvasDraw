@@ -1,21 +1,22 @@
 package io.github.luteoos.mathcanvasdraw.view.activity
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.WindowManager
 import com.luteoos.kotlin.mvvmbaselib.BaseActivityMVVM
 import es.dmoral.toasty.Toasty
 import io.github.luteoos.mathcanvasdraw.R
 import io.github.luteoos.mathcanvasdraw.network.request.FunctionRequest
-import io.github.luteoos.mathcanvasdraw.network.response.ChartResponse
 import io.github.luteoos.mathcanvasdraw.utils.Parameters
 import io.github.luteoos.mathcanvasdraw.view.activity.input.FunctionCreatorActivity
 import io.github.luteoos.mathcanvasdraw.view.adapter.RVFunctionListChartCreator
 import io.github.luteoos.mathcanvasdraw.viewmodels.ChartCreatorViewModel
-import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_chart_creator.*
+import kotlinx.android.synthetic.main.add_chart_dialog.view.*
 
 class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
 
@@ -68,7 +69,20 @@ class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
         }
 
         floatingActionButton.setOnClickListener {
-            viewModel.createChart()
+            val view = layoutInflater.inflate(R.layout.add_chart_dialog, findViewById(android.R.id.content), false)
+
+            val builder = AlertDialog.Builder(this)
+                .apply {
+                    setView(view)
+                    setTitle("Add chart")
+                    setPositiveButton("Save") { _, _ ->
+                        viewModel.createChart(view.et_chart_name.text.toString())
+                    }
+                    setNegativeButton("Cancel") { _, _ -> {} }
+                }
+            val dialog = builder.create()
+                .apply { window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE) }
+                .show()
         }
     }
 
