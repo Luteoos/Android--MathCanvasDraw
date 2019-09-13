@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="UsernameTip">Nazwa</string>
+    <string name="PasswordTip">Hasło</string>
+    <string name="api_error">Brak odpowiedzi z serwera!</string>
+    <string name="no_internet">Brak połączenia!</string>
+    <string name="error">Błąd!</string>
+    <string name="login_failed">Zła nazwa użytkownika lub hasło!</string>
+    <string name="failed_load_avatar">Nie udało się wczytać avatara!</string>
+    <string name="no_avatar_load">Brak awatara</string>
+    <string name="need_permission">Brak uprawnień!!</string>
+    <string name="error_upload">Błąd przesyłania!</string>
+    <string name="color_hint">Wprowadź dowolny kolor</string>
+</resources>
