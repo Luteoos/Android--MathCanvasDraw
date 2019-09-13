@@ -68,7 +68,7 @@ class ChartCreatorActivity : BaseActivityMVVM<ChartCreatorViewModel>() {
         }
 
         floatingActionButton.setOnClickListener {
-            viewModel.createChart()
+            viewModel.createChart("")
         }
     }
 

@@ -43,10 +43,15 @@
                     android:textColor="@color/grey_700"
                     android:background="@drawable/rounded_button"
             />
+
             <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/button9" android:layout_weight="1"
-                    tools:visibility="invisible" android:visibility="invisible"/>
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="ARC"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
         </LinearLayout>
         <LinearLayout

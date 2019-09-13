@@ -43,9 +43,9 @@ class ChartCreatorViewModel : BaseViewModel() {
         }))
     }
 
-    fun createChart(){
+    fun createChart(string: String?=null){
         val request = ChartRequest().apply {
-            name = Date().time.toString()
+            name = string ?: Date().time.toString()
         }
         val client = RestApi.createService(API::class.java).postChart(request)
         CompositeDisposable().add(client
